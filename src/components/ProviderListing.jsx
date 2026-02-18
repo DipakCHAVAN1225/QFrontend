@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Star, MapPin, Briefcase, ChevronRight, Search, Filter } from 'lucide-react';
+const API= import.meta.env.VITE_API_URL;
 
 export default function ProviderListing({ onSelectProvider, onBack }) {
   const [providers, setProviders] = useState([]);
@@ -24,7 +25,7 @@ export default function ProviderListing({ onSelectProvider, onBack }) {
       setLoading(true);
       setError('');
       
-      const response = await fetch('/providers');
+      const response = await fetch(`${API}/providers`);
       
       if (!response.ok) {
         throw new Error('Failed to fetch providers');

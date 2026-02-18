@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Bell, DollarSign, Calendar, Clock, CheckCircle, XCircle, Menu, X, TrendingUp, Star, Award, Users, Loader, User, Settings, LogOut, Upload, AlertCircle, Save } from 'lucide-react';
+const API= import.meta.env.VITE_API_URL;
 
 export default function ProviderDashboard() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -71,10 +72,10 @@ export default function ProviderDashboard() {
       }
 
       const [reqRes, bookRes] = await Promise.all([
-        fetch('http://localhost:3000/api/bookings/provider/requests', {
+        fetch(`${API}/bookings/provider/requests`, {
           headers: { 'Authorization': `Bearer ${token}` }
         }),
-        fetch('http://localhost:3000/api/bookings/provider/bookings', {
+        fetch(`${API}/bookings/provider/bookings`, {
           headers: { 'Authorization': `Bearer ${token}` }
         })
       ]);
@@ -104,7 +105,7 @@ export default function ProviderDashboard() {
       const token = localStorage.getItem('token');
       if (!token) return;
 
-      const response = await fetch('http://localhost:3000/api/user/profile', {
+      const response = await fetch(`${API}/user/profile`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -153,7 +154,7 @@ export default function ProviderDashboard() {
   const handleAccept = async (bookingId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3000/api/bookings/${bookingId}/accept`, {
+      const response = await fetch(`${API}/bookings/${bookingId}/accept`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
       });
@@ -170,7 +171,7 @@ export default function ProviderDashboard() {
   const handleReject = async (bookingId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3000/api/bookings/${bookingId}/reject`, {
+      const response = await fetch(`${API}/bookings/${bookingId}/reject`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
       });
@@ -187,7 +188,7 @@ export default function ProviderDashboard() {
   const handleCompleteBooking = async (bookingId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3000/api/bookings/${bookingId}/complete`, {
+      const response = await fetch(`${API}/bookings/${bookingId}/complete`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
       });
@@ -286,7 +287,7 @@ export default function ProviderDashboard() {
         formDataToSend.append('profileImage', profileImage);
       }
 
-      const response = await fetch('http://localhost:3000/api/user/profile', {
+      const response = await fetch(`${API}/user/profile`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}` },
         body: formDataToSend

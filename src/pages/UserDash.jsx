@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/useAuth';
 import { Calendar, Users, LogOut, Menu, X, Settings } from 'lucide-react';
 
+
 export default function UserDash() {
   const { user, logout } = useAuth();
   const [userData, setUserData] = useState(null);
@@ -26,14 +27,16 @@ export default function UserDash() {
         }
 
         // Fetch current user data from backend
-        const response = await fetch('http://localhost:3000/api/auth/me', {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          }
-        });
+      
 
+const API= import.meta.env.VITE_API_URL;
+const response = await fetch(`${API}/auth/me`, {
+  method: "GET",
+  headers: {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  },
+});
         if (!response.ok) {
           throw new Error('Failed to fetch user data');
         }

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiFetch } from "../auth/api";
 import { useAuth } from "../auth/useAuth";
-
+const API = import.meta.env.VITE_API_URL;
 export default function Signup() {
   const [tab, setTab] = useState("user"); // "user" or "provider"
 
@@ -47,7 +47,7 @@ export default function Signup() {
     try {
       console.log("  User registration with:", { name: userName, email: userEmail, role: "user" });
       
-      const data = await apiFetch("/auth/register", {
+      const data = await apiFetch(`${API}/auth/register`, {
         method: "POST",
         body: JSON.stringify({
           role: "user",
@@ -101,7 +101,7 @@ export default function Signup() {
     try {
       console.log("  Provider registration with:", { businessName: provBusiness, serviceType: provServiceType, email: provEmail, role: "provider" });
       
-      const data = await apiFetch("/auth/register", {
+      const data = await apiFetch(`${API}/auth/register`, {
         method: "POST",
         body:{
           role: "provider",

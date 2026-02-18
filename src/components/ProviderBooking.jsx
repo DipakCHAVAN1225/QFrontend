@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Star, MapPin, Phone, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useAuth } from '../auth/useAuth';
+const API = import.meta.env.VITE_API_URL;
 
 export default function ProviderBooking({ providerId, onBack }) {
   const auth = useAuth();
@@ -53,7 +54,7 @@ export default function ProviderBooking({ providerId, onBack }) {
       setLoading(true);
       setError('');
       
-      const response = await fetch(`http://localhost:3000/api/providers`);
+      const response = await fetch(`${API}/providers`);
       
       if (!response.ok) {
         throw new Error('Failed to fetch provider data');
@@ -92,7 +93,7 @@ export default function ProviderBooking({ providerId, onBack }) {
 
   const fetchAvailableTimes = async (date) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/providers/${providerId}/available-times?date=${date}`);
+      const response = await fetch(`${API}/providers/${providerId}/available-times?date=${date}`);
       
       if (response.ok) {
         const data = await response.json();
@@ -204,7 +205,7 @@ const handlePayment = async (e) => {
     console.log('User ID:', userId);
 
     // Send booking to backend - token is in Authorization header
-    const response = await fetch('http://localhost:3000/api/bookings', {
+    const response = await fetch(`${API}/bookings`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${authToken}`,

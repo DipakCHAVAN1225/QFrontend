@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { MapPin, Calendar, Clock, Star, MessageCircle, RotateCcw, AlertCircle, Loader } from 'lucide-react';
+const API = import.meta.env.VITE_API_URL;
 
 export default function MyBookings() {
   const [filter, setFilter] = useState('all');
@@ -26,7 +27,7 @@ export default function MyBookings() {
       }
 
       // Try the new bookings endpoint first
-      let response = await fetch('http://localhost:3000/api/bookings/user', {
+      let response = await fetch(`${API}/bookings/user`, {
         method: 'GET',
         headers: { 
           'Authorization': `Bearer ${token}`,
@@ -37,7 +38,7 @@ export default function MyBookings() {
       // If that fails, try fetching from payments endpoint (where bookings are stored)
       if (response.status === 404) {
         console.log('📦 Bookings endpoint not found, fetching from payments...');
-        response = await fetch('http://localhost:3000/api/payment/bookings', {
+        response = await fetch(`${API}/payment/bookings`, {
           method: 'GET',
           headers: { 
             'Authorization': `Bearer ${token}`,
@@ -109,7 +110,7 @@ export default function MyBookings() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3000/api/bookings/${bookingId}/cancel`, {
+      const response = await fetch(`${API}/bookings/${bookingId}/cancel`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
       });
@@ -129,7 +130,7 @@ export default function MyBookings() {
   const handleSubmitRating = async (bookingId, rating, review) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:3000/api/bookings/${bookingId}/rate`, {
+      const response = await fetch(`${API}/bookings/${bookingId}/rate`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({ rating, review })

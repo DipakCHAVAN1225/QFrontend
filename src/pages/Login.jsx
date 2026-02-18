@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { apiFetch } from "../auth/api";
 import { useAuth } from "../auth/useAuth";
 // import { useAuth } from '../auth/useAuth';  // Correct path
+const API = import.meta.env.VITE_API_URL; // Base URL for API requests
 
 export default function Login() {
   const [tab, setTab] = useState("user"); // "user" or "provider"
@@ -42,7 +43,7 @@ export default function Login() {
 
     setLoading(true);
     try {
-      const data = await apiFetch("/auth/login", {
+      const data = await apiFetch(`${API}/auth/login`, {
         method: "POST",
         body: JSON.stringify({
           role: "user",
@@ -74,7 +75,7 @@ export default function Login() {
 
     setLoading(true);
     try {
-      const data = await apiFetch("/auth/login", {
+      const data = await apiFetch(`${API}/auth/login`, {
         method: "POST",
         body: JSON.stringify({
           role: "provider",
