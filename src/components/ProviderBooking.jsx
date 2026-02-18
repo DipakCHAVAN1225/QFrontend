@@ -61,7 +61,7 @@ export default function ProviderBooking({ providerId, onBack }) {
       }
       
       const data = await response.json();
-      const provider = data.providers?.find(p => p.id === providerId);
+      const provider = data.providers?.find(p => p._id === providerId);
       
       if (!provider) {
         throw new Error('Provider not found');
