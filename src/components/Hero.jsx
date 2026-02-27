@@ -69,7 +69,7 @@ export default function Hero(){
               {/* Image */}
               <div className="relative h-96 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50">
                 <img 
-                  src="/Static/Ac_Installation_1.jpg" 
+                  src="/images/Ac_Installation_1.jpg" 
                   alt="AC Installation Service" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />

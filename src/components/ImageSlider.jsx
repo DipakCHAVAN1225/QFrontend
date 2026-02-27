@@ -5,14 +5,14 @@ export default function ImageSlider() {
 
 
   const images = [
-    "bathroom-cleaning (1).jpg" ,
-    "instant-glow-facial.jpg",
-    "natural-salon-desk-cover.webp",
-    "1735893886310-6dbc53.webp",
-    "1750420814338-49f225.webp",
-    "1765426992951-93ac91.webp",
-    "1765427014173-6ef806.webp",
-    "wall-makeovers-banner.jpg"
+    "/images/bathroom-cleaning (1).jpg" ,
+    "/images/instant-glow-facial.jpg",
+    "/images/natural-salon-desk-cover.webp",
+    "/images/1735893886310-6dbc53.webp",
+    "/images/1750420814338-49f225.webp",
+    "/images/1765426992951-93ac91.webp",
+    "/images/1765427014173-6ef806.webp",
+    "/images/wall-makeovers-banner.jpg"
   ];
 
   // AUTO SLIDER

@@ -34,10 +34,10 @@ const categories = [
 ];
 
 const services = [
-  { id: 1, title: 'AC Service & Repair', price: 'From ₹499', time: '1 - 2 hrs', img: '/Static/AC_Reparing.jpg' },
-  { id: 2, title: 'Home Cleaning',        price: 'From ₹299', time: '2 - 4 hrs', img: '/Static/House_Keeping.jpg' },
-  { id: 3, title: 'Plumbing',             price: 'From ₹399', time: '1 - 3 hrs', img: '/Static/Plumbing.jpg' },
-  { id: 4, title: 'Electrician',          price: 'From ₹199', time: '30 - 90 mins', img: '/Static/Electrician.jpg' },
+  { id: 1, title: 'AC Service & Repair', price: 'From ₹499', time: '1 - 2 hrs', img: '/images/AC_Reparing.jpg' },
+  { id: 2, title: 'Home Cleaning',        price: 'From ₹299', time: '2 - 4 hrs', img: '/images/House_Keeping.jpg' },
+  { id: 3, title: 'Plumbing',             price: 'From ₹399', time: '1 - 3 hrs', img: '/images/Plumbing.jpg' },
+  { id: 4, title: 'Electrician',          price: 'From ₹199', time: '30 - 90 mins', img: '/images/Electrician.jpg' },
 ];
 
 export default function HomeServices() {
